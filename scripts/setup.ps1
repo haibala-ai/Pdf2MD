@@ -47,6 +47,11 @@ if (!(Test-Path -LiteralPath $taskPython)) {
 
 & $taskPython -c "import sys,struct; sys.exit(0 if sys.version_info[:2]==(3,12) and struct.calcsize('P')==8 else 1)"
 if ($LASTEXITCODE -ne 0) { throw 'The existing .venv is not 64-bit Python 3.12. Use a fresh unpacked folder.' }
+& $taskPython -m pip --version *> $null
+if ($LASTEXITCODE -ne 0) {
+    & $taskPython -m ensurepip --upgrade
+    if ($LASTEXITCODE -ne 0) { throw 'pip is missing. Install a Python 3.12 distribution with ensurepip, then rerun setup.' }
+}
 & $taskPython -c "import importlib.util as u, importlib.metadata as m, sys; ok=all(u.find_spec(n) is not None for n in ['mineru','markdown_it','pypdf','pypdfium2']); sys.exit(0 if ok and m.version('mineru')=='4.0.12' else 1)"
 if ($LASTEXITCODE -ne 0) {
     $taskPipArguments = @('-m','pip','install','--disable-pip-version-check','-r',(Join-Path $taskProjectRoot 'requirements\locked.txt'))

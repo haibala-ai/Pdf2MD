@@ -45,6 +45,12 @@ if ! "$venv_python" -c 'import struct,sys; sys.exit(0 if sys.version_info[:2]==(
     printf '%s\n' 'Existing venv is not 64-bit Python 3.12. Use a fresh environment.' >&2
     exit 1
 fi
+if ! "$venv_python" -m pip --version >/dev/null 2>&1; then
+    if ! "$venv_python" -m ensurepip --upgrade; then
+        printf '%s\n' 'pip is missing. Install python3.12-venv (or a Python distribution with ensurepip), then rerun setup.' >&2
+        exit 1
+    fi
+fi
 if ! "$venv_python" -c 'import importlib.util as u,importlib.metadata as m,sys; ok=all(u.find_spec(n) is not None for n in ["mineru","markdown_it","pypdf","pypdfium2"]); sys.exit(0 if ok and m.version("mineru")=="4.0.12" else 1)'; then
     pip_args=(-m pip install --disable-pip-version-check -r "$project_root/requirements/locked.txt")
     if "$offline"; then
