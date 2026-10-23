@@ -1,0 +1,16 @@
+.venv*/
+.mineru/
+__pycache__/
+output/
+tmp/
+dist/
+wheelhouse/
+.pytest_cache/
+.env
+.env.*
+*.log
+*.py[cod]
+.DS_Store
+Thumbs.db
+build/
+*.egg-info/

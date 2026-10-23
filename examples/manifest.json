@@ -1,0 +1,20 @@
+{
+  "papers": [
+    {
+      "title": "PiPNN: Ultra-Scalable Graph-Based Nearest Neighbor Indexing",
+      "filename": "pdfs/pipnn_kdd2026_best_research_v3.pdf",
+      "version": "arXiv 2602.21247v3",
+      "pdf_url": "https://arxiv.org/pdf/2602.21247v3",
+      "pages": 18,
+      "sha256": "75e9048e910590a6a998ee8b43a1bd498779aecaf90352f6a93da022dbe5a0d9"
+    },
+    {
+      "title": "Characterizing the Expressivity of Local Attention in Transformers",
+      "filename": "pdfs/acl2026_local_attention_best_paper.pdf",
+      "version": "ACL Anthology 2026.acl-long.1739",
+      "pdf_url": "https://aclanthology.org/2026.acl-long.1739.pdf",
+      "pages": 23,
+      "sha256": "41c1f2c94382380c0fcd75e5f0e3212001fcbe8d2075020c0e53bccb3c374528"
+    }
+  ]
+}
